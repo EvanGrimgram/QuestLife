@@ -8,9 +8,9 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/quest"
         android:layout_width="80dp"
-        android:layout_height="85dp"
+        android:layout_height="86dp"
         android:layout_marginTop="16dp"
         android:text="+"
         android:textAlignment="center"
@@ -21,12 +21,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/items"
+        android:id="@+id/inventory"
         android:layout_width="132dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
-        android:text="Items"
+        android:text="Inventory"
         android:textAlignment="center"
         android:textSize="10sp"
         android:textStyle="bold"
@@ -56,14 +56,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/items" />
+        app:layout_constraintTop_toBottomOf="@+id/inventory" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="428dp"
         android:layout_height="125dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/quest"
         app:srcCompat="@drawable/landscape" />
 
     <TextView

@@ -1,6 +1,9 @@
 package edu.utsa.cs3443.questlife;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +13,25 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class HistoryActivity extends AppCompatActivity {
 
+    private Button returnButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_history);
+
+        returnButton = findViewById(R.id.returnButton);
+
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start the new activity
+                Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
