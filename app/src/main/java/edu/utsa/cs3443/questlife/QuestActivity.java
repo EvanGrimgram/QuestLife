@@ -11,9 +11,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class QuestActivity extends AppCompatActivity {
 
     private Button returnButton;
+    private TextInputEditText inputText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class QuestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quest);
 
         returnButton = findViewById(R.id.returnButton);
+        inputText = findViewById(R.id.InputText);
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +35,8 @@ public class QuestActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

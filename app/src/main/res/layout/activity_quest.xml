@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/ReturnText" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -30,7 +30,7 @@
         app:srcCompat="@drawable/landscape" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/ReturnText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start New Quest"
@@ -53,5 +53,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/QuestNameText"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:text="Quest Name:"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/InputTextLayout"
+        android:layout_width="284dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/InputText"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:clickable="true"
+            android:contextClickable="true"
+            android:editable="true"
+            android:enabled="true"
+            android:hint="name"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
