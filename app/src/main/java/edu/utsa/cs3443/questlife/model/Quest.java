@@ -1,8 +1,10 @@
 package edu.utsa.cs3443.questlife.model;
 
+import java.util.ArrayList;
+
 public class Quest {
     private String userInput;
-    private ArrayList <Quest> userQuests;
+    private ArrayList<Quest> userQuests;
 
     // Constructor
     public Quest(String userInput) {
