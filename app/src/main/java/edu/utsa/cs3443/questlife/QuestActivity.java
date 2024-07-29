@@ -3,8 +3,7 @@ package edu.utsa.cs3443.questlife;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.*;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +16,14 @@ import com.google.android.material.textfield.TextInputEditText;
 public class QuestActivity extends AppCompatActivity {
 
     private Button returnButton;
-    private Button submitButton;
     private TextInputEditText inputText;
+    private RadioGroup difficultyOptions;
+    private RadioButton easyButton;
+    private RadioButton mediumButton;
+    private RadioButton hardButton;
+    private Button submitButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +32,14 @@ public class QuestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quest);
 
         returnButton = findViewById(R.id.returnButton);
-        submitButton = findViewById(R.id.buttonSubmit);
         inputText = findViewById(R.id.InputText);
+
+        difficultyOptions = findViewById(R.id.DifficultyGroup);
+        easyButton = findViewById(R.id.EasyRadio);
+        mediumButton = findViewById(R.id.MediumRadio);
+        hardButton = findViewById(R.id.HardRadio);
+
+        submitButton = findViewById(R.id.buttonSubmit);
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,8 +53,20 @@ public class QuestActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start the new activity
-                Toast.makeText(QuestActivity.this, "Submitted!", Toast.LENGTH_SHORT).show();
+
+                // This is the inputted text of Quest Name. Warning: This can be NULL.
+                String textInput = inputText.getText().toString();
+
+
+                // Selected difficulty will be "Easy" "Medium" or "Hard". Warning: This can be NULL.
+                int selectedId = difficultyOptions.getCheckedRadioButtonId();
+                RadioButton selectedButton = findViewById(selectedId);
+                String radioInput = selectedButton.getText().toString();
+
+
+                Toast.makeText(QuestActivity.this, textInput + ". " + radioInput + " Difficulty. Submitted!", Toast.LENGTH_SHORT).show();
+
+                // Implement actual code to add the quest here. Toast text can stay to clarify submission.
             }
         });
 
