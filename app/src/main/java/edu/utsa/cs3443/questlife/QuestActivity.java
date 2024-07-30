@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import edu.utsa.cs3443.questlife.model.*;
+
 public class QuestActivity extends AppCompatActivity {
 
     private Button returnButton;
@@ -53,20 +55,36 @@ public class QuestActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String textInput;
+                String radioInput;
 
-                // This is the inputted text of Quest Name. Warning: This can be NULL.
-                String textInput = inputText.getText().toString();
+                // This is the inputted text of Quest Name. Warning: This can be "NULL".
+
+                textInput = inputText.getText().toString();
+                if (textInput.isEmpty()) {
+                    textInput = "NULL";
+                }
 
 
-                // Selected difficulty will be "Easy" "Medium" or "Hard". Warning: This can be NULL.
+                // Selected difficulty will be "Easy" "Medium" or "Hard". Warning: This can be "NULL".
                 int selectedId = difficultyOptions.getCheckedRadioButtonId();
                 RadioButton selectedButton = findViewById(selectedId);
-                String radioInput = selectedButton.getText().toString();
+                radioInput = selectedButton != null ? selectedButton.getText().toString() : "NULL";
 
+
+                Quest newQuest = new Quest(textInput, radioInput);
+
+                // Adds quest to UserQuests
+                UserQuests.getInstance().addQuest(newQuest);
+
+                /*
+                //prints the quest names of each quest
+                for (Quest quest : UserQuests.getInstance().getQuests()) {
+                    System.out.println("Quest Name: " + quest.getUserInput());
+                }
+                */
 
                 Toast.makeText(QuestActivity.this, textInput + ". " + radioInput + " Difficulty. Submitted!", Toast.LENGTH_SHORT).show();
-
-                // Implement actual code to add the quest here. Toast text can stay to clarify submission.
             }
         });
 
