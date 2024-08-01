@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -111,10 +112,24 @@ public class MainActivity extends AppCompatActivity {
 
             TextView questNameTextView = cardView.findViewById(R.id.textCurrentQuest);
             TextView difficultyTextView = cardView.findViewById(R.id.textDifficulty);
+            ImageView difficultyImageView = cardView.findViewById(R.id.difficultyImageView);
+
             Button completedQuestButton = cardView.findViewById(R.id.completedQuestButton);
 
             questNameTextView.setText(quest.getUserInput());
-            difficultyTextView.setText(quest.getDifficulty()); // Set the difficulty level
+            difficultyTextView.setText(quest.getDifficulty());
+
+            switch (quest.getDifficulty().toLowerCase()) {
+                case "easy":
+                    difficultyImageView.setImageResource(R.drawable.easy);
+                    break;
+                case "medium":
+                    difficultyImageView.setImageResource(R.drawable.medium);
+                    break;
+                case "hard":
+                    difficultyImageView.setImageResource(R.drawable.hard);
+                    break;
+            }
 
             completedQuestButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -149,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         currentEnemy.reduceHealth(damage);
         if (currentEnemy.getHealth() <= 0) {
             // Add to boss history
-            BossHistory.getInstance().addDefeatedEnemy(currentEnemy.getName(), currentEnemy.getImageResource(), currentEnemy.getHealth() + damage);
+            BossHistory.getInstance().addDefeatedEnemy(currentEnemy.getName(), currentEnemy.getImageResource(),currentEnemy.getHealth() + damage, currentEnemy.getOriginalHealth());
 
             // Add to inventory
             UserInventory.getInstance().addItem(currentEnemy.getItem(), currentEnemy.getItemImageResource());

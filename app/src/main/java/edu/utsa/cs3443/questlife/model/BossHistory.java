@@ -19,8 +19,8 @@ public class BossHistory {
         return instance;
     }
 
-    public void addDefeatedEnemy(String name, int imageResource, int health) {
-        defeatedEnemies.add(new DefeatedEnemy(name, imageResource, health));
+    public void addDefeatedEnemy(String name, int imageResource, int health, int originalHealth) {
+        defeatedEnemies.add(new DefeatedEnemy(name, imageResource, health, originalHealth));
     }
 
     public List<DefeatedEnemy> getDefeatedEnemies() {
@@ -31,11 +31,13 @@ public class BossHistory {
         private String name;
         private int imageResource;
         private int health;
+        private int originalHealth;
 
-        public DefeatedEnemy(String name, int imageResource, int health) {
+        public DefeatedEnemy(String name, int imageResource, int health, int originalHealth) {
             this.name = name;
             this.imageResource = imageResource;
             this.health = health;
+            this.originalHealth = originalHealth;
         }
 
         public String getName() {
@@ -48,6 +50,10 @@ public class BossHistory {
 
         public int getHealth() {
             return health;
+        }
+
+        public int getOriginalHealth() {
+            return originalHealth;
         }
     }
 }

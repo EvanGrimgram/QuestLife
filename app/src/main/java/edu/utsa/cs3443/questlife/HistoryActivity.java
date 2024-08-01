@@ -70,7 +70,7 @@ public class HistoryActivity extends AppCompatActivity {
         enemyImageView.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
 
         TextView enemyTextView = new TextView(this);
-        enemyTextView.setText(enemy.getName() + " (Health: " + enemy.getHealth() + ")");
+        enemyTextView.setText(enemy.getName() + " (Health: " + enemy.getOriginalHealth() + ")");
         enemyTextView.setGravity(Gravity.CENTER);
         enemyTextView.setTextSize(25);
         enemyTextView.setPadding(10, 0, 0, 0);

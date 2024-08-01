@@ -6,6 +6,8 @@ public class Enemy {
     private String item;
     private int itemImageResource;
     private int health;
+    private int originalHealth;
+
 
     public Enemy(String name, int imageResource, String item, int itemImageResource, int health) {
         this.name = name;
@@ -13,6 +15,7 @@ public class Enemy {
         this.item = item;
         this.itemImageResource = itemImageResource;
         this.health = health;
+        this.originalHealth = health;
     }
 
     public String getName() {
@@ -33,6 +36,10 @@ public class Enemy {
 
     public int getHealth() {
         return health;
+    }
+
+    public int getOriginalHealth(){
+        return originalHealth;
     }
 
     public void setHealth(int health) {
