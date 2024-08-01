@@ -112,24 +112,45 @@
 
         <RadioButton
             android:id="@+id/EasyRadio"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Easy" />
 
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/easy" />
+
         <RadioButton
             android:id="@+id/MediumRadio"
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Medium" />
 
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/medium" />
+
         <RadioButton
             android:id="@+id/HardRadio"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Hard" />
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/hard" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

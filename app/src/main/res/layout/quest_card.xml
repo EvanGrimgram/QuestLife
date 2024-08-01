@@ -5,44 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="#6750A4"
+    android:background="#6750A4"
     app:cardCornerRadius="25dp"
     app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="96dp">
+        android:layout_width="403dp"
+        android:layout_height="match_parent"
+        android:background="#6750A4">
 
         <TextView
             android:id="@+id/textDifficulty"
-            android:layout_width="362dp"
-            android:layout_height="24dp"
+            android:layout_width="294dp"
+            android:layout_height="29dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textAlignment="viewStart"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.128"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textCurrentQuest"
-            android:layout_width="361dp"
-            android:layout_height="42dp"
+            android:layout_width="294dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="8dp"
             android:text="Current Quest"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
+            android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintHorizontal_bias="0.127"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textDifficulty"
-            app:layout_constraintVertical_bias="0.272"
+            app:layout_constraintVertical_bias="1.0"
             app:layout_constraintWidth_percent="0.7" />
+
+        <Button
+            android:id="@+id/completedQuestButton"
+            style="@style/ShapeAppearanceOverlay.Material3.Corner.Bottom"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="16dp"
+            android:elegantTextHeight="false"
+            android:fadingEdge="horizontal|vertical"
+            android:fadingEdgeLength="15dp"
+            android:foreground="@drawable/checked_checkbox_64"
+            android:singleLine="false"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textCurrentQuest"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

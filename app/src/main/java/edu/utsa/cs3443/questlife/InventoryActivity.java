@@ -1,19 +1,26 @@
 package edu.utsa.cs3443.questlife;
 
-import android.content.Intent;
 import android.os.Bundle;
+
+import android.content.Intent;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import edu.utsa.cs3443.questlife.model.UserInventory;
+
 public class InventoryActivity extends AppCompatActivity {
 
     private Button returnButton;
+    private LinearLayout inventoryLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +29,11 @@ public class InventoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_inventory);
 
         returnButton = findViewById(R.id.returnButton);
+        inventoryLayout = findViewById(R.id.inventoryLayout);
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start the new activity
                 Intent intent = new Intent(InventoryActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -37,5 +44,40 @@ public class InventoryActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        displayInventory();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        displayInventory();
+    }
+
+    private void displayInventory() {
+        inventoryLayout.removeAllViews();
+        for (UserInventory.Item item : UserInventory.getInstance().getItems()) {
+            addItemToInventory(item);
+        }
+    }
+
+    private void addItemToInventory(UserInventory.Item item) {
+        LinearLayout itemLayout = new LinearLayout(this);
+        itemLayout.setOrientation(LinearLayout.HORIZONTAL);
+        itemLayout.setGravity(Gravity.CENTER_VERTICAL);
+
+        ImageView itemImageView = new ImageView(this);
+        itemImageView.setImageResource(item.getImageResource());
+        itemImageView.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
+
+        TextView itemTextView = new TextView(this);
+        itemTextView.setText("Item: " + item.getName());
+        itemTextView.setGravity(Gravity.CENTER);
+        itemTextView.setTextSize(25);
+        itemTextView.setPadding(10, 0, 0, 0);
+
+        itemLayout.addView(itemImageView);
+        itemLayout.addView(itemTextView);
+
+        inventoryLayout.addView(itemLayout);
     }
 }

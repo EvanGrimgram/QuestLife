@@ -56,39 +56,35 @@ public class QuestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String textInput;
-                String radioInput;
-
-                // This is the inputted text of Quest Name. Warning: This can be "NULL".
+                String radioInput = null;
 
                 textInput = inputText.getText().toString();
                 if (textInput.isEmpty()) {
                     textInput = "NULL";
                 }
 
-
-                // Selected difficulty will be "Easy" "Medium" or "Hard". Warning: This can be "NULL".
                 int selectedId = difficultyOptions.getCheckedRadioButtonId();
-                RadioButton selectedButton = findViewById(selectedId);
-                radioInput = selectedButton != null ? selectedButton.getText().toString() : "NULL";
+                if (selectedId != -1) {
+                    RadioButton selectedButton = findViewById(selectedId);
+                    if (selectedButton != null) {
+                        radioInput = selectedButton.getText().toString();
+                    }
+                }
 
+                if (radioInput == null) {
+                    Toast.makeText(QuestActivity.this, "Please select a difficulty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Quest newQuest = new Quest(textInput, radioInput);
-
-                // Adds quest to UserQuests
                 UserQuests.getInstance().addQuest(newQuest);
 
-                /*
-                //prints the quest names of each quest
-                for (Quest quest : UserQuests.getInstance().getQuests()) {
-                    System.out.println("Quest Name: " + quest.getUserInput());
-                }
-                */
-
                 Toast.makeText(QuestActivity.this, textInput + ". " + radioInput + " Difficulty. Submitted!", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(QuestActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
