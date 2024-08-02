@@ -79,8 +79,8 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ScrollView
-        android:layout_width="414dp"
-        android:layout_height="351dp"
+        android:layout_width="411dp"
+        android:layout_height="438dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
