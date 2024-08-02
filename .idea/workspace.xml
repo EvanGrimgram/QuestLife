@@ -30,6 +30,11 @@
           <theme>@style/Theme.QuestLife</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/inventory_item_card.xml">
+        <config>
+          <theme>@style/Theme.QuestLife</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/quest_card.xml">
         <config>
           <theme>@style/Theme.QuestLife</theme>
@@ -41,7 +46,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated HistoryActivity to display new centered and bigger image view of defeated enemies" />
+    <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated HistoryActivity to display new centered and bigger image view of defeated enemies">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/inventory_item_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722557414721</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated HistoryActivity to display new centered and bigger image view of defeated enemies">
+      <option name="closed" value="true" />
+      <created>1722557480188</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722557480188</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.content.Intent;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +16,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
+
+import edu.utsa.cs3443.questlife.model.BossHistory;
 import edu.utsa.cs3443.questlife.model.UserInventory;
 
 public class InventoryActivity extends AppCompatActivity {
@@ -55,12 +59,24 @@ public class InventoryActivity extends AppCompatActivity {
 
     private void displayInventory() {
         inventoryLayout.removeAllViews();
-        for (UserInventory.Item item : UserInventory.getInstance().getItems()) {
-            addItemToInventory(item);
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        List<UserInventory.Item> item = UserInventory.getInstance().getItems();
+
+        for (UserInventory.Item items : item) {
+            View cardView = inflater.inflate(R.layout.inventory_item_card, inventoryLayout, false);
+
+            ImageView lootImageView = cardView.findViewById(R.id.LootImageView);
+            TextView textLootName = cardView.findViewById(R.id.textLootName);
+
+            lootImageView.setImageResource(items.getImageResource());
+            textLootName.setText(String.valueOf(items.getName()));
+
+            inventoryLayout.addView(cardView);
         }
     }
 
-    private void addItemToInventory(UserInventory.Item item) {
+    /*private void addItemToInventory(UserInventory.Item item) {
         LinearLayout itemLayout = new LinearLayout(this);
         itemLayout.setOrientation(LinearLayout.HORIZONTAL);
         itemLayout.setGravity(Gravity.CENTER_VERTICAL);
@@ -79,5 +95,5 @@ public class InventoryActivity extends AppCompatActivity {
         itemLayout.addView(itemTextView);
 
         inventoryLayout.addView(itemLayout);
-    }
+    }*/
 }
