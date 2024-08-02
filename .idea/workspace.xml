@@ -41,12 +41,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated the card view so it displays difficulty image depending on the quest difficulty. HistoryActivity now shows the original Health of an enemy.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/defeated_enemy_card.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/HistoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/HistoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" afterDir="false" />
-    </list>
+    <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated HistoryActivity to display new centered and bigger image view of defeated enemies" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -258,13 +253,22 @@
       <option name="project" value="LOCAL" />
       <updated>1722493299622</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated HistoryActivity to display new centered and bigger image view of defeated enemies">
+      <option name="closed" value="true" />
+      <created>1722557414721</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1722557414721</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added method that displays the created quests to the MainActivity.java" />
     <MESSAGE value="Updated QuestLife to accurately display Demo" />
     <MESSAGE value="Updated the card view so it displays difficulty image depending on the quest difficulty. HistoryActivity now shows the original Health of an enemy." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the card view so it displays difficulty image depending on the quest difficulty. HistoryActivity now shows the original Health of an enemy." />
+    <MESSAGE value="Updated HistoryActivity to display new centered and bigger image view of defeated enemies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated HistoryActivity to display new centered and bigger image view of defeated enemies" />
   </component>
 </project>

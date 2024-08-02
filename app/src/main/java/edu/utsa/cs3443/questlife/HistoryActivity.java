@@ -79,26 +79,4 @@ public class HistoryActivity extends AppCompatActivity {
         }
     }
 
-
-
-    /*private void addDefeatedEnemy(BossHistory.DefeatedEnemy enemy) {
-        LinearLayout enemyLayout = new LinearLayout(this);
-        enemyLayout.setOrientation(LinearLayout.HORIZONTAL);
-        enemyLayout.setGravity(Gravity.CENTER_VERTICAL);
-
-        ImageView enemyImageView = new ImageView(this);
-        enemyImageView.setImageResource(enemy.getImageResource());
-        enemyImageView.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
-
-        TextView enemyTextView = new TextView(this);
-        enemyTextView.setText(enemy.getName() + " (Health: " + enemy.getOriginalHealth() + ")");
-        enemyTextView.setGravity(Gravity.CENTER);
-        enemyTextView.setTextSize(25);
-        enemyTextView.setPadding(10, 0, 0, 0);
-
-        enemyLayout.addView(enemyImageView);
-        enemyLayout.addView(enemyTextView);
-
-        enemyHistoryLayout.addView(enemyLayout);
-    }*/
 }
