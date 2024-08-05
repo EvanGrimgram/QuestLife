@@ -69,8 +69,12 @@ public class InventoryActivity extends AppCompatActivity {
             ImageView lootImageView = cardView.findViewById(R.id.LootImageView);
             TextView textLootName = cardView.findViewById(R.id.textLootName);
 
-            lootImageView.setImageResource(items.getImageResource());
-            textLootName.setText(String.valueOf(items.getName()));
+            if (item != null) {
+                lootImageView.setImageResource(items.getImageResource());
+                textLootName.setText(items.getName());
+            } else {
+                System.out.println("Found null item in inventory.");
+            }
 
             inventoryLayout.addView(cardView);
         }

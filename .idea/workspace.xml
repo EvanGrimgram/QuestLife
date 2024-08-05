@@ -46,11 +46,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated HistoryActivity to display new centered and bigger image view of defeated enemies">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/inventory_item_card.xml" afterDir="false" />
+    <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated InventoryActivity to display a centered and bigger image view of loot inventory">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/health_bar_drawable.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +110,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -279,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722557480188</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Updated InventoryActivity to display a centered and bigger image view of loot inventory">
+      <option name="closed" value="true" />
+      <created>1722560038644</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722560038644</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -287,6 +298,7 @@
     <MESSAGE value="Updated QuestLife to accurately display Demo" />
     <MESSAGE value="Updated the card view so it displays difficulty image depending on the quest difficulty. HistoryActivity now shows the original Health of an enemy." />
     <MESSAGE value="Updated HistoryActivity to display new centered and bigger image view of defeated enemies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated HistoryActivity to display new centered and bigger image view of defeated enemies" />
+    <MESSAGE value="Updated InventoryActivity to display a centered and bigger image view of loot inventory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated InventoryActivity to display a centered and bigger image view of loot inventory" />
   </component>
 </project>

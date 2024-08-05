@@ -1,12 +1,16 @@
 package edu.utsa.cs3443.questlife;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout questContainer;
     private Enemy currentEnemy;
     private final Enemy[] enemies = {
-            new Enemy("Demon", R.drawable.demon, "Demon Ring", R.drawable.demonring, 5),
-            new Enemy("Bigman", R.drawable.bigman, "Bigman Shoe", R.drawable.bigmanshoe, 5),
-            new Enemy("Wizard", R.drawable.wizard, "Wizard Hat", R.drawable.wizardhat, 5),
-            new Enemy("Zombie", R.drawable.zombie, "Zombie Tooth", R.drawable.zombietooth, 5),
-            new Enemy("Cloudman", R.drawable.cloudman, "Cloudman Raindrop", R.drawable.cloudmanwaterdrop, 5)
+            new Enemy("Demon", R.drawable.demon, "Demon Ring", R.drawable.demonring, 10),
+            new Enemy("Bigman", R.drawable.bigman, "Bigman Shoe", R.drawable.bigmanshoe, 10),
+            new Enemy("Wizard", R.drawable.wizard, "Wizard Hat", R.drawable.wizardhat, 10),
+            new Enemy("Zombie", R.drawable.zombie, "Zombie Tooth", R.drawable.zombietooth, 10),
+            new Enemy("Cloudman", R.drawable.cloudman, "Cloudman Raindrop", R.drawable.cloudmanwaterdrop, 10)
     };
 
 
@@ -51,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         inventoryButton = findViewById(R.id.inventory);
         questButton = findViewById(R.id.quest);
         questContainer = findViewById(R.id.questContainer);
+
+        restoreEnemyState();
+
+        updateEnemyUI();
+        displayQuests();
 
 
         bossHistoryButton.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +107,61 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         displayQuests();
+    }
+
+    private void saveEnemyState() {
+        if (currentEnemy != null) {
+            SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("enemy_name", currentEnemy.getName());
+            editor.putInt("enemy_health", currentEnemy.getHealth());
+            editor.putInt("enemy_original_health", currentEnemy.getOriginalHealth());
+            editor.putInt("enemy_image_resource", currentEnemy.getImageResource());
+            editor.putInt("enemy_item_image", currentEnemy.getItemImageResource());
+            editor.putString("enemy_item", currentEnemy.getItem());
+            editor.apply();
+        }
+    }
+
+    private void restoreEnemyState() {
+        SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
+        String name = prefs.getString("enemy_name", null);
+        String item = prefs.getString("enemy_item", null);
+        int health = prefs.getInt("enemy_health", 0);
+        int originalHealth = prefs.getInt("enemy_original_health", 0);
+        int imageResource = prefs.getInt("enemy_image_resource", R.drawable.cloudman);
+        int itemImage = prefs.getInt("enemy_item_image", R.drawable.cloudmanwaterdrop);
+
+        if (name != null && originalHealth > 0) {
+            currentEnemy = new Enemy(name, imageResource, item, itemImage, originalHealth);
+            currentEnemy.setHealth(health);
+        } else {
+            if (currentEnemy == null) {
+                currentEnemy = getRandomEnemy();
+            }
+        }
+    }
+
+    private void updateEnemyUI() {
+        TextView healthTextView = findViewById(R.id.healthTextView);
+        ProgressBar healthProgressBar = findViewById(R.id.healthProgressBar);
+        ImageView enemyImageView = findViewById(R.id.enemyImageView);
+
+        if (currentEnemy != null) {
+            healthTextView.setText("Health: " + currentEnemy.getHealth());
+
+            // Calculate new progress
+            int newProgress = (int) (((float) currentEnemy.getHealth() / currentEnemy.getOriginalHealth()) * 100);
+
+            // Animate the progress bar
+            ObjectAnimator progressAnimator = ObjectAnimator.ofInt(healthProgressBar, "progress", healthProgressBar.getProgress(), newProgress);
+            progressAnimator.setDuration(1000); // Animation duration in milliseconds
+            progressAnimator.setInterpolator(new DecelerateInterpolator()); // Optional: smooth easing
+            progressAnimator.start();
+
+            // Update the image resource for the enemy
+            enemyImageView.setImageResource(currentEnemy.getImageResource());
+        }
     }
 
     // Displays the created quests
@@ -155,13 +219,14 @@ public class MainActivity extends AppCompatActivity {
                 damage = 5;
                 break;
             case "hard":
-                damage = 7;
+                damage = 10;
                 break;
         }
 
         // Deals damage to the boss and then performs other functions if it dies
         // Toast displays remaining hp if it doesn't
         currentEnemy.reduceHealth(damage);
+
         if (currentEnemy.getHealth() <= 0) {
             // Add to boss history
             BossHistory.getInstance().addDefeatedEnemy(currentEnemy.getName(), currentEnemy.getImageResource(),currentEnemy.getHealth() + damage, currentEnemy.getOriginalHealth());
@@ -177,13 +242,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Remove the completed quest from the list
-        UserQuests.getInstance().getQuests().remove(quest);
+        /*UserQuests.getInstance().getQuests().remove(quest);*/
+        updateEnemyUI();
+        saveEnemyState();
         displayQuests();
     }
 
     // Spawns new random enemy out of the enemy arraylist
     private Enemy getRandomEnemy() {
         Random random = new Random();
-        return enemies[random.nextInt(enemies.length)];
+        Enemy newEnemy = enemies[random.nextInt(enemies.length)];
+        return new Enemy(newEnemy.getName(), newEnemy.getImageResource(), newEnemy.getItem(), newEnemy.getItemImageResource(), newEnemy.getOriginalHealth());
     }
+
 }
