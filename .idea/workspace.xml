@@ -47,18 +47,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work">
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/HistoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/HistoryActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/QuestActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/QuestActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/BossHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/BossHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/Quest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/Quest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserQuests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserQuests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_quest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_quest.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,12 +124,12 @@
     &quot;assignee&quot;: &quot;vic1702&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/UTSA-CS-3443/QuestLife.git",
-    "accountId": "e62b1a7e-e3cb-45b0-af75-dc9496a4fb86"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/UTSA-CS-3443/QuestLife.git&quot;,
+    &quot;accountId&quot;: &quot;e62b1a7e-e3cb-45b0-af75-dc9496a4fb86&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -156,7 +151,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Scarnato/Downloads/schoolwork/UTSA/summer24/cs3443/lab3/kjm209-lab3",
+    "last_opened_file_path": "C:/Users/Scarnato/Downloads/schoolwork/UTSA/summer24/cs3443/project/git3/QuestLife",
     "settings.editor.selected.configurable": "inlay.hints"
   }
 }]]></component>

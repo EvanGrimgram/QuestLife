@@ -29,6 +29,26 @@
         app:layout_constraintTop_toBottomOf="@+id/returnButton"
         app:srcCompat="@drawable/landscape" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="140dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/player" />
+
+    <ImageView
+        android:id="@+id/enemyImageView"
+        android:layout_width="121dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cloudman" />
+
     <TextView
         android:id="@+id/ReturnText"
         android:layout_width="wrap_content"

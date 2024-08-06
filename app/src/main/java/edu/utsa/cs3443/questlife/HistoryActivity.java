@@ -15,8 +15,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.util.List;
+import android.content.SharedPreferences;
 
 import edu.utsa.cs3443.questlife.model.BossHistory;
+import edu.utsa.cs3443.questlife.model.Enemy;
 
 /**
  * The HistoryActivity class sets up the layout for the Boss History screen in the application.
@@ -31,6 +33,8 @@ import edu.utsa.cs3443.questlife.model.BossHistory;
 public class HistoryActivity extends AppCompatActivity {
     private Button returnButton;
     private LinearLayout enemyHistoryLayout;
+    private ImageView enemyImageView;
+    private Enemy currentEnemy;
 
 
     // Sets up the Boss History screen layout
@@ -39,8 +43,11 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_history);
-
         enemyHistoryLayout = findViewById(R.id.enemyContainer);
+
+        // Setting up the image for the currently active enemy
+        enemyImageView = findViewById(R.id.enemyImageView);
+        currentEnemy = getCurrentEnemy();
 
         // Sets up the button for returning to the main screen
         returnButton = findViewById(R.id.returnButton);
@@ -57,6 +64,11 @@ public class HistoryActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Sets the enemy image if the current enemy is not null
+        if (currentEnemy != null) {
+            enemyImageView.setImageResource(currentEnemy.getImageResource());
+        }
 
         // Calling the displayBossHistory method to list out the DefeatedEnemy objects
         displayBossHistory();
@@ -90,6 +102,26 @@ public class HistoryActivity extends AppCompatActivity {
             enemyHealthTextView.setText(String.valueOf(enemy.getOriginalHealth()));
 
             enemyHistoryLayout.addView(cardView);
+        }
+    }
+
+
+    // Retrieve the current enemy state from SharedPreferences to use the image
+    private Enemy getCurrentEnemy() {
+        SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
+        String name = prefs.getString("enemy_name", null);
+        String item = prefs.getString("enemy_item", null);
+        int health = prefs.getInt("enemy_health", 0);
+        int originalHealth = prefs.getInt("enemy_original_health", 0);
+        int imageResource = prefs.getInt("enemy_image_resource", R.drawable.cloudman);
+        int itemImage = prefs.getInt("enemy_item_image", R.drawable.cloudmanwaterdrop);
+
+        if (name != null && originalHealth > 0) {
+            Enemy enemy = new Enemy(name, imageResource, item, itemImage, originalHealth);
+            enemy.setHealth(health);
+            return enemy;
+        } else {
+            return null;
         }
     }
 }

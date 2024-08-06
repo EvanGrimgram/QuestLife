@@ -15,7 +15,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.util.List;
+import android.content.SharedPreferences;
 
+import edu.utsa.cs3443.questlife.model.Enemy;
 import edu.utsa.cs3443.questlife.model.UserInventory;
 
 /**
@@ -31,6 +33,8 @@ import edu.utsa.cs3443.questlife.model.UserInventory;
 public class InventoryActivity extends AppCompatActivity {
     private Button returnButton;
     private LinearLayout inventoryLayout;
+    private ImageView enemyImageView;
+    private Enemy currentEnemy;
 
 
     // Sets up the Boss History screen layout
@@ -39,8 +43,11 @@ public class InventoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_inventory);
-
         inventoryLayout = findViewById(R.id.inventoryLayout);
+
+        // Setting up the image for the currently active enemy
+        enemyImageView = findViewById(R.id.enemyImageView);
+        currentEnemy = getCurrentEnemy();
 
         // Sets up the button for returning to the main screen
         returnButton = findViewById(R.id.returnButton);
@@ -57,6 +64,11 @@ public class InventoryActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Sets the enemy image if the current enemy is not null
+        if (currentEnemy != null) {
+            enemyImageView.setImageResource(currentEnemy.getImageResource());
+        }
 
         // Calling the displayInventory method to list out the Item objects
         displayInventory();
@@ -88,6 +100,26 @@ public class InventoryActivity extends AppCompatActivity {
             textLootName.setText(items.getName());
 
             inventoryLayout.addView(cardView);
+        }
+    }
+
+
+    // Retrieve the current enemy state from SharedPreferences to use the image
+    private Enemy getCurrentEnemy() {
+        SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
+        String name = prefs.getString("enemy_name", null);
+        String item = prefs.getString("enemy_item", null);
+        int health = prefs.getInt("enemy_health", 0);
+        int originalHealth = prefs.getInt("enemy_original_health", 0);
+        int imageResource = prefs.getInt("enemy_image_resource", R.drawable.cloudman);
+        int itemImage = prefs.getInt("enemy_item_image", R.drawable.cloudmanwaterdrop);
+
+        if (name != null && originalHealth > 0) {
+            Enemy enemy = new Enemy(name, imageResource, item, itemImage, originalHealth);
+            enemy.setHealth(health);
+            return enemy;
+        } else {
+            return null;
         }
     }
 }
