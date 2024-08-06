@@ -1,7 +1,6 @@
 package edu.utsa.cs3443.questlife;
 
 import android.os.Bundle;
-
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.util.List;
@@ -36,55 +33,57 @@ public class HistoryActivity extends AppCompatActivity {
     private ImageView enemyImageView;
     private Enemy currentEnemy;
 
-
-    // Sets up the Boss History screen layout
+    /**
+     * Initializes the activity, sets up the layout and retrieves the current enemy data.
+     * @param savedInstanceState The saved instance state bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_history);
         enemyHistoryLayout = findViewById(R.id.enemyContainer);
 
-        // Setting up the image for the currently active enemy
+        // Set up the image view for the currently active enemy
         enemyImageView = findViewById(R.id.enemyImageView);
         currentEnemy = getCurrentEnemy();
 
-        // Sets up the button for returning to the main screen
+        // Set up the button for returning to the main screen
         returnButton = findViewById(R.id.returnButton);
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        returnButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            v.setPadding(insets.getInsets(WindowInsetsCompat.Type.systemBars()).left,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).right,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom);
             return insets;
         });
 
-        // Sets the enemy image if the current enemy is not null
+        // Display the current enemy's image if available
         if (currentEnemy != null) {
             enemyImageView.setImageResource(currentEnemy.getImageResource());
         }
 
-        // Calling the displayBossHistory method to list out the DefeatedEnemy objects
+        // Display the history of defeated enemies
         displayBossHistory();
     }
 
-
-    // Refreshes the Boss History list when navigating back to this screen from the main screen
+    /**
+     * Refreshes the Boss History list when navigating back to this screen from another activity.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         displayBossHistory();
     }
 
-
-    // Gets the Enemy information from the defeatedEnemies ArrayList in BossHistory and then
-    // populates the respective fields of the layout by making use of the defeated_enemy_card
+    /**
+     * Displays the history of defeated enemies by populating the layout.
+     * This method iterates through the defeatedEnemies list in BossHistory and creates views for each enemy.
+     */
     private void displayBossHistory() {
         enemyHistoryLayout.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -105,8 +104,11 @@ public class HistoryActivity extends AppCompatActivity {
         }
     }
 
-
-    // Retrieve the current enemy state from SharedPreferences to use the image
+    /**
+     * Retrieves the current enemy state from SharedPreferences.
+     * This method is used to display the current enemy's image on the history screen.
+     * @return The current Enemy object, or null if no enemy data is found.
+     */
     private Enemy getCurrentEnemy() {
         SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
         String name = prefs.getString("enemy_name", null);

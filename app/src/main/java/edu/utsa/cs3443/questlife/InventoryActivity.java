@@ -1,21 +1,18 @@
 package edu.utsa.cs3443.questlife;
 
 import android.os.Bundle;
-
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.util.List;
 import android.content.SharedPreferences;
+import android.widget.TextView;
 
 import edu.utsa.cs3443.questlife.model.Enemy;
 import edu.utsa.cs3443.questlife.model.UserInventory;
@@ -36,75 +33,80 @@ public class InventoryActivity extends AppCompatActivity {
     private ImageView enemyImageView;
     private Enemy currentEnemy;
 
-
-    // Sets up the Boss History screen layout
+    /**
+     * Initializes the activity, sets up the layout and retrieves current enemy data.
+     * @param savedInstanceState The saved instance state bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_inventory);
         inventoryLayout = findViewById(R.id.inventoryLayout);
 
-        // Setting up the image for the currently active enemy
+        // Set up the image view for the currently active enemy
         enemyImageView = findViewById(R.id.enemyImageView);
         currentEnemy = getCurrentEnemy();
 
-        // Sets up the button for returning to the main screen
+        // Set up the button for returning to the main screen
         returnButton = findViewById(R.id.returnButton);
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InventoryActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        returnButton.setOnClickListener(v -> {
+            Intent intent = new Intent(InventoryActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            v.setPadding(insets.getInsets(WindowInsetsCompat.Type.systemBars()).left,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).right,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom);
             return insets;
         });
 
-        // Sets the enemy image if the current enemy is not null
+        // Display the current enemy's image if available
         if (currentEnemy != null) {
             enemyImageView.setImageResource(currentEnemy.getImageResource());
         }
 
-        // Calling the displayInventory method to list out the Item objects
+        // Display the inventory items
         displayInventory();
     }
 
-
-    // Refreshes the Inventory list when navigating back to this screen from the main screen
+    /**
+     * Refreshes the inventory list when navigating back to this screen from another activity.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         displayInventory();
     }
 
-
-    // Gets the Item information from the items ArrayList in UserInventory and then
-    // populates the respective fields of the layout by making use of the inventory_item_card
+    /**
+     * Displays the items in the user's inventory by populating the layout.
+     * This method iterates through the items in UserInventory and creates views for each item.
+     */
     private void displayInventory() {
         inventoryLayout.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(this);
-        List<UserInventory.Item> item = UserInventory.getInstance().getItems();
+        List<UserInventory.Item> items = UserInventory.getInstance().getItems();
 
-        for (UserInventory.Item items : item) {
+        for (UserInventory.Item item : items) {
             View cardView = inflater.inflate(R.layout.inventory_item_card, inventoryLayout, false);
 
             ImageView lootImageView = cardView.findViewById(R.id.LootImageView);
             TextView textLootName = cardView.findViewById(R.id.textLootName);
 
-            lootImageView.setImageResource(items.getImageResource());
-            textLootName.setText(items.getName());
+            lootImageView.setImageResource(item.getImageResource());
+            textLootName.setText(item.getName());
 
             inventoryLayout.addView(cardView);
         }
     }
 
-
-    // Retrieve the current enemy state from SharedPreferences to use the image
+    /**
+     * Retrieves the current enemy state from SharedPreferences.
+     * This method is used to display the current enemy's image on the inventory screen.
+     * @return The current Enemy object, or null if no enemy data is found.
+     */
     private Enemy getCurrentEnemy() {
         SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
         String name = prefs.getString("enemy_name", null);

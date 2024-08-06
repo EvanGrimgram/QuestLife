@@ -2,13 +2,10 @@ package edu.utsa.cs3443.questlife;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import android.content.Intent;
 import android.view.View;
 import android.widget.*;
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputEditText;
@@ -37,15 +34,16 @@ public class QuestActivity extends AppCompatActivity {
     private ImageView enemyImageView;
     private Enemy currentEnemy;
 
-
-    // Sets up the quest creation screen layout
+    /**
+     * Initializes the activity, sets up the layout and retrieves the current enemy data.
+     * @param savedInstanceState The saved instance state bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_quest);
 
-        // Sets up the text input field for the quest name
+        // Initialize UI components for quest creation
         inputText = findViewById(R.id.InputText);
 
         // Sets up the difficulty selection buttons
@@ -57,70 +55,68 @@ public class QuestActivity extends AppCompatActivity {
         // Sets up the button for finalizing the created quest
         submitButton = findViewById(R.id.buttonSubmit);
 
-        // Setting up the image for the currently active enemy
+        // Set up the image view for the currently active enemy
         enemyImageView = findViewById(R.id.enemyImageView);
         currentEnemy = getCurrentEnemy();
 
-        // Sets up the button for returning to the main screen
+        // Set up the button for returning to the main screen
         returnButton = findViewById(R.id.returnButton);
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(QuestActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        returnButton.setOnClickListener(v -> {
+            Intent intent = new Intent(QuestActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
-
         // Logic for finalizing the creation of a new quest upon clicking the submit button
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String textInput;
-                String radioInput = null;
+        submitButton.setOnClickListener(v -> {
+            String textInput;
+            String radioInput = null;
 
-                textInput = inputText.getText().toString();
-                if (textInput.isEmpty()) {
-                    textInput = "NULL";
-                }
-
-                int selectedId = difficultyOptions.getCheckedRadioButtonId();
-                if (selectedId != -1) {
-                    RadioButton selectedButton = findViewById(selectedId);
-                    if (selectedButton != null) {
-                        radioInput = selectedButton.getText().toString();
-                    }
-                }
-
-                if (radioInput == null) {
-                    Toast.makeText(QuestActivity.this, "Please select a difficulty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                Quest newQuest = new Quest(textInput, radioInput);
-                UserQuests.getInstance().addQuest(newQuest);
-
-                Toast.makeText(QuestActivity.this, textInput + ". " + radioInput + " Difficulty. Submitted!", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(QuestActivity.this, MainActivity.class);
-                startActivity(intent);
+            textInput = inputText.getText().toString();
+            if (textInput.isEmpty()) {
+                textInput = "NULL";
             }
+
+            int selectedId = difficultyOptions.getCheckedRadioButtonId();
+            if (selectedId != -1) {
+                RadioButton selectedButton = findViewById(selectedId);
+                if (selectedButton != null) {
+                    radioInput = selectedButton.getText().toString();
+                }
+            }
+
+            if (radioInput == null) {
+                Toast.makeText(QuestActivity.this, "Please select a difficulty", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Quest newQuest = new Quest(textInput, radioInput);
+            UserQuests.getInstance().addQuest(newQuest);
+
+            Toast.makeText(QuestActivity.this, textInput + ". " + radioInput + " Difficulty. Submitted!", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(QuestActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            v.setPadding(insets.getInsets(WindowInsetsCompat.Type.systemBars()).left,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).top,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).right,
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom);
             return insets;
         });
 
-        // Sets the enemy image if the current enemy is not null
+        // Display the current enemy's image if available
         if (currentEnemy != null) {
             enemyImageView.setImageResource(currentEnemy.getImageResource());
         }
     }
 
-
-    // Retrieve the current enemy state from SharedPreferences to use the image
+    /**
+     * Retrieves the current enemy state from SharedPreferences.
+     * This method is used to display the current enemy's image on the quest creation screen.
+     * @return The current Enemy object, or null if no enemy data is found.
+     */
     private Enemy getCurrentEnemy() {
         SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
         String name = prefs.getString("enemy_name", null);
