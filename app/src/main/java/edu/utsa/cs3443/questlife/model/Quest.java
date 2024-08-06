@@ -2,61 +2,95 @@ package edu.utsa.cs3443.questlife.model;
 
 import java.util.ArrayList;
 
+/**
+ * The Quest class creates the Quest objects which are displayed on the main screens Quest list
+ * A Quest object contains a userInput for the name, a difficulty, the completion status, and
+ * an ArrayList containing all of the users Quests.
+ *
+ * @author JavaJuicers
+ * UTSA CS 3443 - Final Application
+ *
+ */
 public class Quest {
     private String userInput;
-    private String difficulty; // Added difficulty variable
+    private String difficulty;
     private boolean isComplete;
     private ArrayList<Quest> userQuests;
 
-    // Constructor
+    /**
+     * Constructs a new Quest object with the specified name and difficulty,
+     * setting the completion status to false.
+     *
+     * @param userInput the name of the Quest
+     * @param difficulty the difficulty of the Quest
+     */
     public Quest(String userInput, String difficulty) {
         this.userInput = userInput;
-        this.difficulty = difficulty; // Initialize difficulty
-        this.isComplete = false; // set to false first
+        this.difficulty = difficulty;
+        this.isComplete = false;
     }
 
-    // Getter and Setter for User Input
+    /**
+     * Returns the completion status of the Quest
+     * @return the completion status of the Quest
+     */
     public boolean isComplete() {
         return isComplete;
     }
 
+    /**
+     * Sets the completion status of the Quest
+     * @param complete the completion status of the Quest
+     */
     public void setComplete(boolean complete) {
         isComplete = complete;
     }
 
+    /**
+     * Returns the name of the Quest
+     * @return the name of the Quest
+     */
     public String getUserInput() {
         return userInput;
     }
 
+    /**
+     * Sets the name of the Quest
+     * @param userInput the name of the Quest
+     */
     public void setUserInput(String userInput) {
         this.userInput = userInput;
     }
 
-    // Getter and Setter for Difficulty
+    /**
+     * Returns the difficulty of the Quest
+     * @return the difficulty of the Quest
+     */
     public String getDifficulty() {
         return difficulty;
     }
 
+    /**
+     * Sets the difficulty of the Quest
+     * @param difficulty the difficulty of the Quest
+     */
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
 
-    // Getter and Setter for userQuests array
+    /**
+     * Gets the ArrayList of Quests
+     * @return the ArrayList of Quests
+     */
     public ArrayList<Quest> getUserQuests() {
         return userQuests;
     }
 
+    /**
+     * Sets the ArrayList of Quests
+     * @param userQuests the ArrayList of Quests
+     */
     public void setUserQuests(ArrayList<Quest> userQuests) {
         this.userQuests = userQuests;
-    }
-
-    // Method to load quests from array
-    public void loadQuests(ArrayList<Quest> questToLoad) {
-        this.userQuests = questToLoad;
-    }
-
-    // Method to add quests
-    public void addQuest(Quest quest) {
-        this.userQuests.add(quest);
     }
 }

@@ -1,22 +1,30 @@
 package edu.utsa.cs3443.questlife;
 
-import android.content.Intent;
 import android.os.Bundle;
+
+import android.content.Intent;
 import android.view.View;
 import android.widget.*;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.google.android.material.textfield.TextInputEditText;
 
-import edu.utsa.cs3443.questlife.model.*;
+import edu.utsa.cs3443.questlife.model.Quest;
+import edu.utsa.cs3443.questlife.model.UserQuests;
 
+/**
+ * The QuestActivity class sets up the layout for quest creation on the create quest screen of the application.
+ * The user creates a quest through a text input field for the name, a button selection for the difficulty,
+ * and a submit button to finalize the quest creation.
+ *
+ * @author JavaJuicers
+ * UTSA CS 3443 - Final Application
+ *
+ */
 public class QuestActivity extends AppCompatActivity {
-
     private Button returnButton;
     private TextInputEditText inputText;
     private RadioGroup difficultyOptions;
@@ -26,32 +34,37 @@ public class QuestActivity extends AppCompatActivity {
     private Button submitButton;
 
 
-
+    // Sets up the quest creation screen layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_quest);
 
-        returnButton = findViewById(R.id.returnButton);
+        // Sets up the text input field for the quest name
         inputText = findViewById(R.id.InputText);
 
+        // Sets up the difficulty selection buttons
         difficultyOptions = findViewById(R.id.DifficultyGroup);
         easyButton = findViewById(R.id.EasyRadio);
         mediumButton = findViewById(R.id.MediumRadio);
         hardButton = findViewById(R.id.HardRadio);
 
+        // Sets up the button for finalizing the created quest
         submitButton = findViewById(R.id.buttonSubmit);
 
+        // Sets up the button for returning to the main screen
+        returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start the new activity
                 Intent intent = new Intent(QuestActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
 
+
+        // Logic for finalizing the creation of a new quest upon clicking the submit button
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

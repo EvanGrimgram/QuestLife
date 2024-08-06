@@ -1,9 +1,10 @@
 package edu.utsa.cs3443.questlife;
 
+import android.os.Bundle;
+
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -13,13 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import java.util.List;
 import java.util.Random;
 
@@ -29,8 +28,17 @@ import edu.utsa.cs3443.questlife.model.Quest;
 import edu.utsa.cs3443.questlife.model.UserInventory;
 import edu.utsa.cs3443.questlife.model.UserQuests;
 
+/**
+ * The MainActivity class sets up the layout for the main screen of the application.
+ * The MainActivity class contains buttons to access the rest of the screens and a list of active quests.
+ * The MainActivity class also handles quest completion functions, enemy health, and enemy death functions.
+ * The MainActivity class includes a method for refreshing the screen upon being navigated to, ensuring continuation.
+ *
+ * @author JavaJuicers
+ * UTSA CS 3443 - Final Application
+ *
+ */
 public class MainActivity extends AppCompatActivity {
-
     private Button bossHistoryButton;
     private Button inventoryButton;
     private Button questButton;
@@ -45,26 +53,29 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
+    // Sets up the main screen layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        // Sets up the boss history button
         bossHistoryButton = findViewById(R.id.bosshistory);
+        // Sets up the inventory button
         inventoryButton = findViewById(R.id.inventory);
+        // Sets up the quest creation button
         questButton = findViewById(R.id.quest);
         questContainer = findViewById(R.id.questContainer);
 
+        // Calling other methods to set up the screen
         restoreEnemyState();
         updateEnemyUI();
         displayQuests();
 
-
         bossHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start the new activity
                 Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
                 startActivity(intent);
             }
@@ -73,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         inventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start the new activity
                 Intent intent = new Intent(MainActivity.this, InventoryActivity.class);
                 startActivity(intent);
             }
@@ -82,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         questButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an Intent to start the new activity
                 Intent intent = new Intent(MainActivity.this, QuestActivity.class);
                 startActivity(intent);
             }
@@ -100,13 +109,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    // Refreshes the active quests list when navigating back to this screen from the main screen
     @Override
     protected void onResume() {
         super.onResume();
         displayQuests();
     }
 
-    // Saves enemy health state until defeated
+
+    // Saves all of the enemies information state to SharedPreferences
     private void saveEnemyState() {
         if (currentEnemy != null) {
             SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
@@ -121,7 +133,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Restores the health state of the enemy
+
+    // Restores the state of the enemy from SharedPreferences
+    // If no previous state is found, spawns a new random enemy
     private void restoreEnemyState() {
         SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
         String name = prefs.getString("enemy_name", null);
@@ -141,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     // Updates the Enemy's health text, health bar, and their image
     private void updateEnemyUI() {
         TextView healthTextView = findViewById(R.id.healthTextView);
@@ -155,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
 
             // Animate the progress bar
             ObjectAnimator progressAnimator = ObjectAnimator.ofInt(healthProgressBar, "progress", healthProgressBar.getProgress(), newProgress);
-            progressAnimator.setDuration(1000); // Animation duration in milliseconds
-            progressAnimator.setInterpolator(new DecelerateInterpolator()); // Optional: smooth easing
+            progressAnimator.setDuration(1000);
+            progressAnimator.setInterpolator(new DecelerateInterpolator());
             progressAnimator.start();
 
             // Update the image resource for the enemy
@@ -164,7 +179,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Displays the created quests
+
+    // Displays the active quests
+    // Gets the Quest information from the quests ArrayList in UserQuests and then
+    // populates the respective fields of the layout by making use of quest_card
     private void displayQuests() {
         questContainer.removeAllViews();
 
@@ -183,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
             questNameTextView.setText(quest.getUserInput());
             difficultyTextView.setText(quest.getDifficulty());
 
+            // Using the respective quest difficulty icons
             switch (quest.getDifficulty().toLowerCase()) {
                 case "easy":
                     difficultyImageView.setImageResource(R.drawable.easy);
@@ -203,10 +222,10 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.displayQuests();
                 }
             });
-
             questContainer.addView(cardView);
         }
     }
+
 
     // Deals damage upon pressing quest complete based on difficulty
     private void completeQuest(Quest quest) {
@@ -223,17 +242,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+
         // Deals damage to the boss and then performs other functions if it dies
-        // Toast displays remaining hp if it doesn't
+        // Toast displays enemy defeated if it dies or the remaining hp if it doesn't die
         currentEnemy.reduceHealth(damage);
         updateEnemyUI();
 
-
         if (currentEnemy.getHealth() <= 0) {
-            // Add to boss history
+            // Add DefeatedEnemy to boss history
             BossHistory.getInstance().addDefeatedEnemy(currentEnemy.getName(), currentEnemy.getImageResource(),currentEnemy.getHealth() + damage, currentEnemy.getOriginalHealth());
 
-            // Add to inventory
+            // Add Item to inventory
             UserInventory.getInstance().addItem(currentEnemy.getItem(), currentEnemy.getItemImageResource());
 
             // Replace enemy
@@ -243,17 +262,14 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Enemy takes " + damage + " damage. Remaining health: " + currentEnemy.getHealth(), Toast.LENGTH_SHORT).show();
         }
-
-        // Remove the completed quest from the list
-        /*UserQuests.getInstance().getQuests().remove(quest);*/
         saveEnemyState();
         displayQuests();
     }
+
 
     // Spawns new random enemy out of the enemy arraylist
     private Enemy getRandomEnemy() {
         Random random = new Random();
         return enemies[random.nextInt(enemies.length)];
     }
-
 }
