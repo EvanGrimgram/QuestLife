@@ -35,7 +35,6 @@ The instructions for the game are as follows:
 There are a few known issues with QuestLife:
 - Quest names that are too long will not be completely visible when looking at the quest list
 - Quests can be created when the Quest Name is empty, defaulting to the name "NULL"
-- When an enemy is slain, there is a random chance that the new enemy is the same type, making it appear that the enemy was not defeated
 
 ## Contributors
 
