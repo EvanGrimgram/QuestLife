@@ -16,6 +16,7 @@
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
+        android:contentDescription="Create new quest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -30,6 +31,7 @@
         android:textAlignment="center"
         android:textSize="10sp"
         android:textStyle="bold"
+        android:contentDescription="View inventory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +45,7 @@
         android:textAlignment="center"
         android:textSize="10sp"
         android:textStyle="bold"
+        android:contentDescription="View boss history"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,6 +57,7 @@
         android:text="Create Quest!"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:contentDescription="Create Quest section"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inventory" />
@@ -62,6 +66,7 @@
         android:id="@+id/imageView"
         android:layout_width="428dp"
         android:layout_height="125dp"
+        android:contentDescription="Landscape image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quest"
         app:srcCompat="@drawable/landscape" />
@@ -72,6 +77,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="172dp"
+        android:contentDescription="Player avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/player" />
@@ -82,56 +88,10 @@
         android:layout_height="111dp"
         android:layout_marginTop="172dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="Enemy avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cloudman" />
-
-    <LinearLayout
-        android:id="@+id/healthBarContainer"
-        android:layout_width="245dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="275dp"
-        android:layout_marginEnd="4dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ProgressBar
-                android:id="@+id/healthProgressBar"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="147dp"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="90dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:indeterminate="false"
-                android:max="100"
-                android:min="0"
-                android:progress="100"
-                android:progressDrawable="@drawable/health_bar_drawable"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/healthTextView"
-                android:layout_width="87dp"
-                android:layout_height="27dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="4dp"
-                android:text="Health: 100"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
 
     <TextView
         android:id="@+id/textView2"
@@ -141,6 +101,7 @@
         android:textAlignment="textStart"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:contentDescription="Quest List section"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -149,6 +110,7 @@
         android:layout_width="411dp"
         android:layout_height="438dp"
         android:layout_marginTop="10dp"
+        android:contentDescription="Scrollable list of quests"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -158,9 +120,40 @@
             android:id="@+id/questContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/healthTextView"
+        android:layout_width="87dp"
+        android:layout_height="27dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="2dp"
+        android:text="Health: 100"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:contentDescription="Enemy health"
+        app:layout_constraintBottom_toTopOf="@+id/healthProgressBar"
+        app:layout_constraintStart_toEndOf="@+id/quest" />
+
+    <ProgressBar
+        android:id="@+id/healthProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="147dp"
+        android:layout_height="15dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:indeterminate="false"
+        android:max="100"
+        android:min="0"
+        android:progress="100"
+        android:progressDrawable="@drawable/health_bar_drawable"
+        app:layout_constraintBottom_toTopOf="@+id/enemyImageView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
