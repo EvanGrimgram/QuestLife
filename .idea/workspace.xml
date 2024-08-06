@@ -46,12 +46,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated InventoryActivity to display a centered and bigger image view of loot inventory">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/health_bar_drawable.xml" afterDir="false" />
+    <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/health_bar_drawable.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/health_bar_drawable.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -290,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722560038644</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work">
+      <option name="closed" value="true" />
+      <created>1722900362854</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722900362854</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -299,6 +305,7 @@
     <MESSAGE value="Updated the card view so it displays difficulty image depending on the quest difficulty. HistoryActivity now shows the original Health of an enemy." />
     <MESSAGE value="Updated HistoryActivity to display new centered and bigger image view of defeated enemies" />
     <MESSAGE value="Updated InventoryActivity to display a centered and bigger image view of loot inventory" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated InventoryActivity to display a centered and bigger image view of loot inventory" />
+    <MESSAGE value="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work" />
   </component>
 </project>

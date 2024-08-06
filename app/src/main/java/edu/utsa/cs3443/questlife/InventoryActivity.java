@@ -80,24 +80,4 @@ public class InventoryActivity extends AppCompatActivity {
         }
     }
 
-    /*private void addItemToInventory(UserInventory.Item item) {
-        LinearLayout itemLayout = new LinearLayout(this);
-        itemLayout.setOrientation(LinearLayout.HORIZONTAL);
-        itemLayout.setGravity(Gravity.CENTER_VERTICAL);
-
-        ImageView itemImageView = new ImageView(this);
-        itemImageView.setImageResource(item.getImageResource());
-        itemImageView.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
-
-        TextView itemTextView = new TextView(this);
-        itemTextView.setText("Item: " + item.getName());
-        itemTextView.setGravity(Gravity.CENTER);
-        itemTextView.setTextSize(25);
-        itemTextView.setPadding(10, 0, 0, 0);
-
-        itemLayout.addView(itemImageView);
-        itemLayout.addView(itemTextView);
-
-        inventoryLayout.addView(itemLayout);
-    }*/
 }

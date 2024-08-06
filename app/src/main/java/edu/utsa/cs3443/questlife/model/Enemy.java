@@ -49,8 +49,4 @@ public class Enemy {
     public void reduceHealth(int amount) {
         this.health -= amount;
     }
-
-    public boolean isDefeated() {
-        return this.health <= 0;
-    }
 }

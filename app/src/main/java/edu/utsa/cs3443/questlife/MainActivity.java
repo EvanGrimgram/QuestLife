@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         questContainer = findViewById(R.id.questContainer);
 
         restoreEnemyState();
-
         updateEnemyUI();
         displayQuests();
 
@@ -99,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
         if (currentEnemy == null) {
             currentEnemy = getRandomEnemy();
         }
-
-        displayQuests();
     }
 
     @Override
@@ -109,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         displayQuests();
     }
 
+    // Saves enemy health state until defeated
     private void saveEnemyState() {
         if (currentEnemy != null) {
             SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
@@ -123,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Restores the health state of the enemy
     private void restoreEnemyState() {
         SharedPreferences prefs = getSharedPreferences("GamePrefs", MODE_PRIVATE);
         String name = prefs.getString("enemy_name", null);
@@ -142,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Updates the Enemy's health text, health bar, and their image
     private void updateEnemyUI() {
         TextView healthTextView = findViewById(R.id.healthTextView);
         ProgressBar healthProgressBar = findViewById(R.id.healthProgressBar);
@@ -226,6 +226,8 @@ public class MainActivity extends AppCompatActivity {
         // Deals damage to the boss and then performs other functions if it dies
         // Toast displays remaining hp if it doesn't
         currentEnemy.reduceHealth(damage);
+        updateEnemyUI();
+
 
         if (currentEnemy.getHealth() <= 0) {
             // Add to boss history
@@ -236,6 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Replace enemy
             currentEnemy = getRandomEnemy();
+            updateEnemyUI();
             Toast.makeText(this, "Enemy defeated! A new enemy appears.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Enemy takes " + damage + " damage. Remaining health: " + currentEnemy.getHealth(), Toast.LENGTH_SHORT).show();
@@ -243,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Remove the completed quest from the list
         /*UserQuests.getInstance().getQuests().remove(quest);*/
-        updateEnemyUI();
         saveEnemyState();
         displayQuests();
     }
@@ -251,8 +253,7 @@ public class MainActivity extends AppCompatActivity {
     // Spawns new random enemy out of the enemy arraylist
     private Enemy getRandomEnemy() {
         Random random = new Random();
-        Enemy newEnemy = enemies[random.nextInt(enemies.length)];
-        return new Enemy(newEnemy.getName(), newEnemy.getImageResource(), newEnemy.getItem(), newEnemy.getItemImageResource(), newEnemy.getOriginalHealth());
+        return enemies[random.nextInt(enemies.length)];
     }
 
 }
