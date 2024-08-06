@@ -42,5 +42,5 @@ There are a few known issues with QuestLife:
 QuestLife was made by The Java Juicers (Group 13):
 - Victor Garcia
 - John Griffith
-- Hayes Oquinn
+- Hayes O'Quinn
 - Christopher Scarnato
