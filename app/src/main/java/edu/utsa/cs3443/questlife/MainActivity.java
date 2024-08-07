@@ -16,6 +16,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -246,8 +249,15 @@ public class MainActivity extends AppCompatActivity {
             // Add Item to inventory
             UserInventory.getInstance().addItem(currentEnemy.getItem(), currentEnemy.getItemImageResource());
 
-            // Replace enemy
-            currentEnemy = getRandomEnemy();
+            // Replace enemy with a new type, ensure the same enemy does not reappear
+            List<Enemy> remainingEnemies = new ArrayList<>(Arrays.asList(enemies));
+            remainingEnemies.removeIf(e -> e.getName().equals(currentEnemy.getName()));
+            if (!remainingEnemies.isEmpty()) {
+                currentEnemy = remainingEnemies.get(new Random().nextInt(remainingEnemies.size()));
+            } else {
+                currentEnemy = getRandomEnemy(); // Fallback if no enemies left
+            }
+
             saveEnemyState();
             updateEnemyUI();
             Toast.makeText(this, "Enemy defeated! A new enemy appears.", Toast.LENGTH_SHORT).show();
@@ -257,6 +267,7 @@ public class MainActivity extends AppCompatActivity {
         saveEnemyState();
         displayQuests();
     }
+
 
     /**
      * Randomly selects and returns an enemy from the predefined list of enemies.
