@@ -47,12 +47,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work">
-      <change afterPath="$PROJECT_DIR$/QuestLifeUML.class.violet.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/BossHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/BossHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserQuests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserQuests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuestLifeUML.class.violet.html" beforeDir="false" afterPath="$PROJECT_DIR$/QuestLifeUML.class.violet.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,20 +136,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Scarnato/Downloads/schoolwork/UTSA/summer24/cs3443/lab3/kjm209-lab3",
-    "settings.editor.selected.configurable": "inlay.hints"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Scarnato/Downloads/schoolwork/UTSA/summer24/cs3443/project/git5/QuestLife&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
@@ -300,6 +296,17 @@
     </task>
     <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added method that displays the created quests to the MainActivity.java" />
