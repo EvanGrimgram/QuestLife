@@ -35,15 +35,15 @@ public class UserQuests {
     }
 
     /**
-     * Returns the ArrayList of active quests
-     * @return the ArrayList of active quests
+     * Returns the List of active quests
+     * @return the List of active quests
      */
     public List<Quest> getQuests() {
         return quests;
     }
 
     /**
-     * Sets the ArrayList of active quests
+     * Sets the List of active quests
      * @param quests the active quests
      */
     public void setQuests(List<Quest> quests) {

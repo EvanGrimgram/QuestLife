@@ -49,8 +49,8 @@ public class BossHistory {
     }
 
     /**
-     * Returns the ArrayList of DefeatedEnemy objects
-     * @return the ArrayList of DefeatedEnemy objects
+     * Returns the List of DefeatedEnemy objects
+     * @return the List of DefeatedEnemy objects
      */
     public List<DefeatedEnemy> getDefeatedEnemies() {
         return defeatedEnemies;

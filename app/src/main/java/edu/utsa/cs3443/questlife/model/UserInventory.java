@@ -47,8 +47,8 @@ public class UserInventory {
     }
 
     /**
-     * Returns the ArrayList of Item objects
-     * @return the ArrayList of Item objects
+     * Returns the List of Item objects
+     * @return the List of Item objects
      */
     public List<Item> getItems() {
         return items;

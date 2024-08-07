@@ -47,13 +47,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763131b6-aa55-4a65-9487-10c1f38a890f" name="Changes" comment="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work">
+      <change afterPath="$PROJECT_DIR$/QuestLifeUML.class.violet.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/HistoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/HistoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/InventoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/QuestActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/QuestActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_inventory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_quest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_quest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/BossHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/BossHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserQuests.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/utsa/cs3443/questlife/model/UserQuests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +150,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Scarnato/Downloads/schoolwork/UTSA/summer24/cs3443/project/git3/QuestLife",
+    "last_opened_file_path": "C:/Users/Scarnato/Downloads/schoolwork/UTSA/summer24/cs3443/lab3/kjm209-lab3",
     "settings.editor.selected.configurable": "inlay.hints"
   }
 }]]></component>
@@ -308,6 +307,7 @@
     <MESSAGE value="Updated the card view so it displays difficulty image depending on the quest difficulty. HistoryActivity now shows the original Health of an enemy." />
     <MESSAGE value="Updated HistoryActivity to display new centered and bigger image view of defeated enemies" />
     <MESSAGE value="Updated InventoryActivity to display a centered and bigger image view of loot inventory" />
+    <MESSAGE value="moved health bar for visibility" />
     <MESSAGE value="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work" />
     <option name="LAST_COMMIT_MESSAGE" value="Updated User and enemy view in Main Activity, Health decreases accordsing to damage. Can't get the health bar to work" />
   </component>
